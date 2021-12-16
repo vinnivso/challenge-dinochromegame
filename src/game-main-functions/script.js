@@ -1,4 +1,5 @@
-import { updateGround, setupGround } from "./ground.js"
+import { updateGround, setupGround } from "../game-component-functions/ground.js"
+import { updateDino, setupDino } from "../game-component-functions/dino.js"
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
@@ -15,6 +16,7 @@ document.addEventListener("keydown", handleStart, { once: true })
 let lastTime
 let speedScale
 let score
+
 function update(time) {
   if(lastTime == null) {
     lastTime = time
@@ -23,6 +25,7 @@ function update(time) {
   }
   const delta = time - lastTime
   updateGround(delta, speedScale)
+  updateDino(delta, speedScale)
   updateSpeedScale(delta)
   updateScore(delta)
 
@@ -45,6 +48,7 @@ function handleStart() {
   speedScale = 1
   score = 0
   setupGround()
+  setupDino()
   startScreenElem.classList.add("hide")
   window.requestAnimationFrame(update)
 }
