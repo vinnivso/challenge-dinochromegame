@@ -1,4 +1,8 @@
-import { getCustomProperty, setCustomProperty, incrementCustomProperty } from "../game-main-functions/updateCustomProperty.js"
+import {
+  getCustomProperty,
+  setCustomProperty,
+  incrementCustomProperty,
+} from "../game-main-functions/updateCustomProperty.js"
 
 const dinoElem = document.querySelector("[data-dino]")
 const JUMP_SPEED = 0.45
@@ -26,13 +30,21 @@ export function updateDino(delta, speedScale) {
   handleJump(delta)
 }
 
+export function getDinoRect() {
+  return dinoElem.getBoundingClientRect()
+}
+
+export function setDinoLose() {
+  dinoElem.src = `./imgs/dino-lose.png`
+}
+
 function handleRun(delta, speedScale) {
-  if(isJumping) {
+  if (isJumping) {
     dinoElem.src = `./imgs/dino-stationary.png`
     return
   }
 
-  if(currentFrameTime >= FRAME_TIME) {
+  if (currentFrameTime >= FRAME_TIME) {
     dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT
     dinoElem.src = `./imgs/dino-run-${dinoFrame}.png`
     currentFrameTime -= FRAME_TIME
@@ -40,21 +52,19 @@ function handleRun(delta, speedScale) {
   currentFrameTime += delta * speedScale
 }
 
-
 function handleJump(delta) {
-  if(!isJumping) return
+  if (!isJumping) return
   incrementCustomProperty(dinoElem, "--bottom", yVelocity * delta)
 
-  if(getCustomProperty(dinoElem, "--bottom") <= 0) {
+  if (getCustomProperty(dinoElem, "--bottom") <= 0) {
     setCustomProperty(dinoElem, "--bottom", 0)
     isJumping = false
   }
   yVelocity -= GRAVITY * delta
 }
 
-
 function onJump(event) {
-  if(event.code !== "Space" || isJumping) return
+  if (event.code !== "Space" || isJumping) return
   yVelocity = JUMP_SPEED
   isJumping = true
 }
