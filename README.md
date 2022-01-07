@@ -1,4 +1,4 @@
-# practice-dinochromegame
+# javascript-dinochromegame
 Game do Google Chrome - Javascript
 
 ## INTEGRANTE
