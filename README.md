@@ -1,4 +1,4 @@
-# challenge-dinochromegame
+# game-dinochrome
 Game do Google Chrome - Javascript
 
 ## INTEGRANTE
@@ -24,4 +24,3 @@ Recomendo baixar o arquivo e rodar em sua máquina, o surge infelizmente não co
 
 ## Agradecimentos
 Web Dev Simplified.
-
