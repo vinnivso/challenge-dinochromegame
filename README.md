@@ -1,4 +1,4 @@
-# game-dinochrome
+# frontend-dinochrome-game
 Game do Google Chrome - Javascript
 
 ## INTEGRANTE
